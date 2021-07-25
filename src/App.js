@@ -1,4 +1,6 @@
-import { BrowserRouter, Link, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Link } from "react-router-dom";
+
+import { Router } from "./Router/Router";
 import { HOME } from "./HOME";
 import { Page1 } from "./Page1";
 import { Page2 } from "./Page2";
@@ -18,30 +20,8 @@ export default function App() {
         <br />
         <Link to="/Page2">Page2</Link>
       </div>
-      <Switch>
-        <Route exact path="/">
-          <HOME />
-        </Route>
-        <Route
-          path="/Page1"
-          render={({ match: { url } }) => (
-            <Switch>
-              <Route exact path={url}>
-                <Page1 />
-              </Route>
-              <Route path={`${url}/DetailA`}>
-                <Page1DetailA />
-              </Route>
-              <Route path={`${url}/DetailB`}>
-                <Page1DetailB />
-              </Route>
-            </Switch>
-          )}
-        />
-        <Route path="/Page2">
-          <Page2 />
-        </Route>
-      </Switch>
+
+      <Router />
     </BrowserRouter>
   );
 }
